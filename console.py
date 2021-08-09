@@ -138,7 +138,8 @@ class HBNBCommand(cmd.Cmd):
                 if '_' in spl_arg_1[1]:
                     spl_arg_1[1] = spl_arg_1[1].replace('_', ' ')
                     
-            else: spl_arg_1[1] = int(spl_arg_1[1])
+            else:
+                spl_arg_1[1] = int(spl_arg_1[1])
 
             print(spl_arg_1[1].replace('_', ' '), type(spl_arg_1[1]))
             setattr(new_instance, spl_arg_1[0], spl_arg_1[1])

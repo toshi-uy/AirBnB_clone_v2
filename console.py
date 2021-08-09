@@ -132,6 +132,8 @@ class HBNBCommand(cmd.Cmd):
                 value = spl_arg_1[1][1:-1]
                 if '_' in value:
                     value = value.replace('_', ' ')
+                if '"' in value:
+                    value = value.replace('"', '\"')
             else:
                 if '.' in spl_arg_1[1]:
                     try:

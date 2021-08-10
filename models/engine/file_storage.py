@@ -61,5 +61,7 @@ class FileStorage:
         """delete obj from __objects if it’s inside
         if obj is equal to None, the method should not do anything"""
         if obj:
-            if obj in FileStorage.__objects:
-                del(FileStorage.__objects[obj])
+            copy_dict = FileStorage.__objects.copy()
+            for key in copy_dict:
+                if key.split(".")[1] == obj.__dict__['id']:
+                    del(FileStorage.__objects[key])

@@ -34,13 +34,13 @@ class DBStorage:
         classes = ['State', 'City']
         dictionary = {}
         if cls and cls in classes:
-            for instance in self.__session.query(cls).all():
-                key = str(cls.__name__) + '.' + str(instance.id)
+            for instance in self.__session.query(cls):
+                key = str(cls.__class__.__name__) + '.' + str(instance.id)
                 dictionary[key] = instance
         else:
             
             for i in classes:
-                for instance in self.__session.query(i).all():
+                for instance in self.__session.query(i):
                     key = i + '.' + str(instance.id)
                     dictionary[key] = instance
         return dictionary

@@ -61,5 +61,5 @@ class FileStorage:
         """delete obj from __objects if it’s inside
         if obj is equal to None, the method should not do anything"""
         if obj:
-            if obj in self.__objects:
-                del(self.__objects[obj])
+            if obj in FileStorage.__objects:
+                del(FileStorage.__objects[obj])

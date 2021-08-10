@@ -28,21 +28,19 @@ class DBStorage:
                                       pool_pre_ping=True)
         if getenv("HBNB_ENV") == 'test':
             Base.metadata.drop_all(self.__engine)
-        Session = sessionmaker(bind=self.__engine)
-        self.__session = Session()
 
     def all(self, cls=None):
         """query on the current database session"""
+        classes = ['State', 'City']
         dictionary = {}
-        if cls:
-            for instance in self.__session.query(cls):
-                key = str(cls.__name__) + '.' + str(cls.id)
+        if cls and cls in classes:
+            for instance in self.__session.query(cls).all():
+                key = str(cls.__name__) + '.' + str(instance.id)
                 dictionary[key] = instance
-
         else:
-            classes = ['User', 'State', 'City', 'Amenity', 'Place', 'Review']
+            
             for i in classes:
-                for instance in self.__session.query(i):
+                for instance in self.__session.query(i).all():
                     key = i + '.' + str(instance.id)
                     dictionary[key] = instance
         return dictionary

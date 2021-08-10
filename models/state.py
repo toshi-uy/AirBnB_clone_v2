@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String
 from models.city import City
+from os import getenv
 
 
 class State(BaseModel, Base):
@@ -12,14 +13,15 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="all, delete")
 
-    @property
-    def cities(self):
-        """returns the list of City instances with state_id
-        equals to the current State.id"""
-        from models import storage
-        lista = []
-        dictionary = storage.all(City)
-        for key, value in dictionary.items():
-            if value.state_id == self.id:
-                lista.append(dictionary[key])
-        return lista
+    if getenv('HBNB_TYPE_STORAGE') != 'db':
+        @property
+        def cities(self):
+            """returns the list of City instances with state_id
+            equals to the current State.id"""
+            from models import storage
+            lista = []
+            dictionary = storage.all(City)
+            for key, value in dictionary.items():
+                if value.state_id == self.id:
+                    lista.append(dictionary[key])
+            return lista

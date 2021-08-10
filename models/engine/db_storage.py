@@ -14,18 +14,19 @@ from models.review import Review
 
 
 class DBStorage:
-"""This class manages stordatabasehbnb mod"""
+    """This class manages stordatabasehbnb mod"""
     __engine = None
     __session = None
+
     def __init__(self):
         """inicialitation of class"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'\
-                                      .format(getenv(HBNB_MYSQL_USER),
-                                              getenv(HBNB_MYSQL_PWD),
-                                              getenv(HBNB_MYSQL_HOST),
-                                              getenv(HBNB_MYSQL_DB)),
+                                      .format(getenv("HBNB_MYSQL_USER"),
+                                              getenv("HBNB_MYSQL_PWD"),
+                                              getenv("HBNB_MYSQL_HOST"),
+                                              getenv("HBNB_MYSQL_DB")),
                                       pool_pre_ping=True)
-        if getenv(HBNB_ENV) == 'test':
+        if getenv("HBNB_ENV") == 'test':
             Base.metadata.drop_all(self.__engine)
         Session = sessionmaker(bind=self.__engine)
         self.__session = Session()
@@ -35,28 +36,28 @@ class DBStorage:
         dictionary = {}
         if cls:
             for instance in self.__session.query(cls):
-                dictionary.keys() = str(cls.__name__) + '.' + str(cls.id)
-                dictionary.values() = instance
+                key = str(cls.__name__) + '.' + str(cls.id)
+                dictionary[key] = instance
 
         else:
             classes = ['User', 'State', 'City', 'Amenity', 'Place', 'Review']
             for i in classes:
-                for instance in self.__session.query(i)
-                    dictionary.keys() = i + '.' + str(instance.id)
-                    dictionary.values() = instance
+                for instance in self.__session.query(i):
+                    key = i + '.' + str(instance.id)
+                    dictionary[key] = instance
         return dictionary
 
     def new(self, obj):
-    """add the object to the current database session"""
+        """add the object to the current database session"""
         if obj:
             self.__session.add(obj)
 
     def save(self):
-    """commit all changes of the current database session"""
+        """commit all changes of the current database session"""
         self.__session.commit()
 
     def delete(self, obj=None):
-    """delete from the current database session obj if not None"""
+        """delete from the current database session obj if not None"""
         if obj:
             self.__session.delete(obj)
 

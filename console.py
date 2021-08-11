@@ -233,11 +233,11 @@ class HBNBCommand(cmd.Cmd):
             for k, v in storage.all().items():
                 if k.split('.')[0] == args:
                     v = v.to_dict()
-                    print_list.append(str(v))
+                    print_list.append(v)
         else:
             for k, v in storage.all().items():
                 v = v.to_dict()
-                print_list.append(str(v))
+                print_list.append(v)
         print(print_list)
 
     def help_all(self):

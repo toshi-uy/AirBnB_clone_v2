@@ -4,7 +4,6 @@ from sqlalchemy.sql.expression import null
 from sqlalchemy import Column, String, Integer, ForeignKey, Float
 from sqlalchemy.orm import relationship
 from models.base_model import Base, BaseModel
-from models.review import Review
 from os import getenv
 
 
@@ -22,7 +21,7 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float)
         longitude = Column(Float)
-        reviews = relationship("Review", backref="user",
+        reviews = relationship("Review", backref="place",
                                cascade="all, delete-orphan")
     else:
         city_id = ""
@@ -43,7 +42,7 @@ class Place(BaseModel, Base):
             equals to the current State.id"""
             from models import storage
             lista = []
-            dictionary = storage.all(Place)
+            dictionary = storage.all(self)
             for key, value in dictionary.items():
                 if value.place_id == self.id:
                     lista.append(dictionary[key])

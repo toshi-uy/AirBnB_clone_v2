@@ -31,7 +31,7 @@ class DBStorage:
 
     def all(self, cls=None):
         """query on the current database session"""
-        classes = [State, City, User, Place, Review]
+        classes = [State, City, User, Place, Review, Amenity]
         dictionary = {}
         if cls and cls in classes:
             for instance in self.__session.query(cls).all():

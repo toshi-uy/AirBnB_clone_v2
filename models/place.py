@@ -1,10 +1,20 @@
 #!/usr/bin/python3
 """ Place Module for HBNB project """
 from sqlalchemy.sql.expression import null
-from sqlalchemy import Column, String, Integer, ForeignKey, Float
+from sqlalchemy import Column, String, Integer, ForeignKey, Float, Table
 from sqlalchemy.orm import relationship
 from models.base_model import Base, BaseModel
+from models.amenity import Amenity
 from os import getenv
+
+place_amenities = Table('place_amenity', Base.metadata,
+                        Column('place_id', String(60),
+                               ForeignKey('places.id'),
+                               primary_key=True, nullable=False),
+                        Column('amenity_id', String(60),
+                               ForeignKey('amenities.id'),
+                               primary_key=True, nullable=False)
+)
 
 
 class Place(BaseModel, Base):
@@ -21,8 +31,11 @@ class Place(BaseModel, Base):
         price_by_night = Column(Integer, nullable=False, default=0)
         latitude = Column(Float)
         longitude = Column(Float)
+        amenity_ids = []
         reviews = relationship("Review", backref="place",
                                cascade="all, delete-orphan")
+        amenities = relationship("Amenity", secondary="place_amenity",
+                                 viewonly=False)
     else:
         city_id = ""
         user_id = ""
@@ -47,3 +60,19 @@ class Place(BaseModel, Base):
                 if value.place_id == self.id:
                     lista.append(dictionary[key])
             return lista
+
+        @property
+        def amenities(self):
+            """returns the list of Amenity instances"""
+            lista = []
+            dictionary = storage.all(self)
+            for key, value in dictionary.items():
+                if value.amenity_ids == self.id:
+                    lista.append(dictionary[key])
+            return lista
+
+        @amenities.setter
+        def amenities_setter(self, amenities):
+            """setter of amenities"""
+            if type(amenities) == Amenity:
+                self.append(amenities.id)

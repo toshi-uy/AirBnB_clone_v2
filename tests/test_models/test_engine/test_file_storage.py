@@ -2,8 +2,27 @@
 """ Module for testing file storage"""
 import unittest
 from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models import storage
 import os
+import pep8
+import inspect
+
+
+class Test_pep8(unittest.TestCase):
+    """pep8 test cases class"""
+    def test_pep8_conformance(self):
+        """Test that we conform to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['tests/test_models/test_file_storage.py',
+                                        'models/engine/file_storage.py', 'models/engine/db_storage.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
 
 class test_fileStorage(unittest.TestCase):

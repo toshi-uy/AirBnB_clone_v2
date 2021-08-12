@@ -122,7 +122,6 @@ class HBNBCommand(cmd.Cmd):
         elif argumentos[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-
         new_instance = HBNBCommand.classes[argumentos[0]]()
 
         for i in range(1, len(argumentos)):

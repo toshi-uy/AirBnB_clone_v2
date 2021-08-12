@@ -59,3 +59,11 @@ class test_User(test_basemodel):
     def test_is_subclass_User(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.user.__class__, BaseModel), True)
+
+    def test_to_dict(self):
+        """test"""
+        self.assertEqual('to_dict' in dir(self.user), True)
+
+    def test_doc_string(self):
+        """test"""
+        self.assertIsNotNone(User.__doc__)

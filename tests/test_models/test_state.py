@@ -44,3 +44,11 @@ class test_state(test_basemodel):
     def test_is_subclass_State(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.state.__class__, BaseModel), True)
+
+    def test_to_dict(self):
+        """test"""
+        self.assertEqual('to_dict' in dir(self.state), True)
+
+    def test_doc_string(self):
+        """test"""
+        self.assertIsNotNone(State.__doc__)

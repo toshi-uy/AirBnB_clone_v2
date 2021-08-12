@@ -54,3 +54,11 @@ class test_review(test_basemodel):
     def test_is_subclass_Review(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.review.__class__, BaseModel), True)
+
+    def test_to_dict(self):
+        """test"""
+        self.assertEqual('to_dict' in dir(self.review), True)
+
+    def test_doc_string(self):
+        """test"""
+        self.assertIsNotNone(Review.__doc__)

@@ -44,3 +44,13 @@ class test_Amenity(test_basemodel):
     def test_is_subclass_City(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)
+
+    def test_to_dict(self):
+        """test"""
+        self.assertEqual('to_dict' in dir(self.amenity), True)
+
+    def test_doc_string(self):
+        """test"""
+        self.assertIsNotNone(Amenity.__doc__)
+
+    d

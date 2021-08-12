@@ -94,3 +94,11 @@ class test_Place(test_basemodel):
     def test_is_subclass_Place(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.place.__class__, BaseModel), True)
+
+    def test_to_dict(self):
+        """test"""
+        self.assertEqual('to_dict' in dir(self.place), True)
+
+    def test_doc_string(self):
+        """test"""
+        self.assertIsNotNone(Place.__doc__)

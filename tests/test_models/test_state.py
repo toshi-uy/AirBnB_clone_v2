@@ -34,13 +34,6 @@ class test_state(test_basemodel):
         """test"""
         del cls.state
 
-    def tearDown(self):
-        """test"""
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_is_subclass_State(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.state.__class__, BaseModel), True)

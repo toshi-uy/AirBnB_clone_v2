@@ -49,13 +49,6 @@ class test_User(test_basemodel):
         """test"""
         del cls.user
 
-    def tearDown(self):
-        """test"""
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_is_subclass_User(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.user.__class__, BaseModel), True)

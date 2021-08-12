@@ -84,13 +84,6 @@ class test_Place(test_basemodel):
         """test"""
         del cls.place
 
-    def tearDown(self):
-        """test"""
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_is_subclass_Place(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.place.__class__, BaseModel), True)

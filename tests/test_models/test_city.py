@@ -43,13 +43,6 @@ class test_City(test_basemodel):
         """test"""
         del cls.city
 
-    def tearDown(self):
-        """test"""
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_attributes(self):
         """test"""
         self.assertTrue('id' in self.city.__dict__)

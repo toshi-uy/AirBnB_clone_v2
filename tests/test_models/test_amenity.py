@@ -34,13 +34,6 @@ class test_Amenity(test_basemodel):
         """test"""
         del cls.amenity
 
-    def tearDown(self):
-        """test"""
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_is_subclass_City(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)

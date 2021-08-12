@@ -44,13 +44,6 @@ class test_review(test_basemodel):
         """test"""
         del cls.review
 
-    def tearDown(self):
-        """test"""
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_is_subclass_Review(self):
         """ test subclass"""
         self.assertTrue(issubclass(self.review.__class__, BaseModel), True)

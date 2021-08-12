@@ -7,12 +7,12 @@ from models.amenity import Amenity
 from os import getenv
 
 metadata = MetaData()
-place_amenities = Table('place_amenity', Base.metadata,
+place_amenity = Table('place_amenity', Base.metadata,
                         Column('place_id', String(60),
-                               ForeignKey('places.id'),
+                               ForeignKey("places.id"),
                                primary_key=True, nullable=False),
                         Column('amenity_id', String(60),
-                               ForeignKey('amenities.id'),
+                               ForeignKey("amenities.id"),
                                primary_key=True, nullable=False)
 )
 
@@ -64,15 +64,10 @@ class Place(BaseModel, Base):
         @property
         def amenities(self):
             """returns the list of Amenity instances"""
-            lista = []
-            dictionary = storage.all(self)
-            for key, value in dictionary.items():
-                if value.amenity_ids == self.id:
-                    lista.append(dictionary[key])
-            return lista
+            return self.amenities
 
         @amenities.setter
-        def amenities_setter(self, amenities):
+        def amenities_setter(self, amenities=None):
             """setter of amenities"""
             if type(amenities) == Amenity:
                 self.append(amenities.id)

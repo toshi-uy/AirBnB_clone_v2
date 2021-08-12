@@ -3,6 +3,7 @@
 from tests.test_models.test_base_model import test_basemodel
 from models.city import City
 import pep8
+import unittest
 
 
 class Test_pep8(unittest.TestCase):
@@ -49,3 +50,6 @@ class test_City(test_basemodel):
         self.assertTrue('created_at' in self.city.__dict__)
         self.assertTrue('updated_at' in self.city.__dict__)
         self.assertTrue('name' in self.city.__dict__)
+
+if __name__ == "__main__":
+    unittest.main()

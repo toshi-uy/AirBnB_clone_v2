@@ -3,6 +3,7 @@
 from tests.test_models.test_base_model import test_basemodel
 from models.user import User
 import pep8
+import unittest
 
 
 class Test_pep8(unittest.TestCase):
@@ -67,3 +68,6 @@ class test_User(test_basemodel):
         self.assertTrue('created_at' in self.user.__dict__)
         self.assertTrue('updated_at' in self.user.__dict__)
         self.assertTrue('name' in self.user.__dict__)
+
+if __name__ == "__main__":
+    unittest.main()

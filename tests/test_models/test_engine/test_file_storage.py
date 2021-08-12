@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 """ Module for testing file storage"""
+import os
+import pep8
+import inspect
 import unittest
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -9,11 +13,11 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 from models import storage
-import os
-import pep8
-import inspect
 
 
+@unittest.skipIf(
+    os.getenv('HBNB_TYPE_STORAGE') == 'db',
+    "Only works in Filestorage")
 class Test_pep8(unittest.TestCase):
     """pep8 test cases class"""
     def test_pep8_conformance(self):
@@ -61,16 +65,21 @@ class test_fileStorage(unittest.TestCase):
 
     def test_new(self):
         """ New object is correctly added to __objects """
-        new = BaseModel()
-        for obj in storage.all().values():
-            temp = obj
-        self.assertTrue(temp is obj)
+        storage = FileStorage()
+        object = storage.all()
+        state = State()
+        state.name = "Cerro_Chato"
+        storage.new(state)
+        key = state.__class__.__name__ + "." + str(state.id)
+        self.assertIsNotNone(object[key])
 
     def test_all(self):
         """ __objects is properly returned """
-        new = BaseModel()
+        storage = FileStorage()
         temp = storage.all()
         self.assertIsInstance(temp, dict)
+        self.assertIsNotNone(temp)
+        self.assertIs(temp, storage._FileStorage__objects)
 
     def test_base_model_instantiation(self):
         """ File is not created on BaseModel save """
@@ -138,3 +147,6 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+if __name__ == "__main__":
+    unittest.main()

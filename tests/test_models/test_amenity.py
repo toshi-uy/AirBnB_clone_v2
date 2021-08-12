@@ -3,6 +3,7 @@
 from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
 import pep8
+import unittest
 
 
 class Test_pep8(unittest.TestCase):
@@ -52,3 +53,6 @@ class test_Amenity(test_basemodel):
         self.assertTrue('created_at' in self.amenity.__dict__)
         self.assertTrue('updated_at' in self.amenity.__dict__)
         self.assertTrue('name' in self.amenity.__dict__)
+
+if __name__ == "__main__":
+    unittest.main()

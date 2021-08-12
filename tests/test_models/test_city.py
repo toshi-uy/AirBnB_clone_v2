@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ testfile"""
 from tests.test_models.test_base_model import test_basemodel
+from models.base_model import BaseModel
 from models.city import City
 import pep8
 import unittest
@@ -38,11 +39,11 @@ class test_City(test_basemodel):
 
     def test_is_subclass_City(self):
         """ test subclass"""
-        self.assertTrue(issubclass(self.city.__class__, BaseModel), True)
+        self.assertTrue(issubclass(self.__class__, BaseModel), True)
 
     def tearDown(cls):
         """test"""
-        del cls.city
+        del cls
 
     def test_attributes(self):
         """test"""

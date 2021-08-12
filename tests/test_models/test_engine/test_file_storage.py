@@ -18,9 +18,11 @@ class Test_pep8(unittest.TestCase):
     """pep8 test cases class"""
     def test_pep8_conformance(self):
         """Test that we conform to PEP8."""
+        files = 'tests/test_models/test_engine/test_file_storage.py'
         pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['tests/test_models/test_engine/test_file_storage.py',
-                                        'models/engine/file_storage.py', 'models/engine/db_storage.py'])
+        result = pep8style.check_files([files,
+                                        'models/engine/file_storage.py',
+                                        'models/engine/db_storage.py'])
         self.assertEqual(result.total_errors, 0,
                          "Found code style errors (and warnings).")
 
@@ -52,13 +54,6 @@ class test_fileStorage(unittest.TestCase):
             del_list.append(key)
         for key in del_list:
             del storage._FileStorage__objects[key]
-
-    def tearDown(self):
-        """ Remove storage file at end of tests """
-        try:
-            os.remove('file.json')
-        except:
-            pass
 
     def test_obj_list_empty(self):
         """ __objects is initially empty """

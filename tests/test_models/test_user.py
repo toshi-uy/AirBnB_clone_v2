@@ -48,7 +48,7 @@ class test_User(test_basemodel):
 
     def tearDown(cls):
         """test"""
-        del cls.user
+        del cls
 
     def test_is_subclass_User(self):
         """ test subclass"""

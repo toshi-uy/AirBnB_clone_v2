@@ -83,7 +83,7 @@ class test_Place(test_basemodel):
 
     def tearDown(cls):
         """test"""
-        del cls.place
+        del cls
 
     def test_is_subclass_Place(self):
         """ test subclass"""

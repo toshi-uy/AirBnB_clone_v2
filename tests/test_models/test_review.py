@@ -43,7 +43,7 @@ class test_review(test_basemodel):
 
     def tearDown(cls):
         """test"""
-        del cls.review
+        del cls
 
     def test_is_subclass_Review(self):
         """ test subclass"""

@@ -33,7 +33,7 @@ class test_state(test_basemodel):
 
     def tearDown(cls):
         """test"""
-        del cls.state
+        del cls
 
     def test_is_subclass_State(self):
         """ test subclass"""

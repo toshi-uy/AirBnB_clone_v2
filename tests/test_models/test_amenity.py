@@ -33,7 +33,7 @@ class test_Amenity(test_basemodel):
 
     def tearDown(cls):
         """test"""
-        del cls.amenity
+        del cls
 
     def test_is_subclass_City(self):
         """ test subclass"""

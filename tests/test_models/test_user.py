@@ -17,30 +17,45 @@ class Test_pep8(unittest.TestCase):
 
 
 class test_User(test_basemodel):
-    """ """
+    """test"""
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """test"""
         super().__init__(*args, **kwargs)
         self.name = "User"
         self.value = User
 
     def test_first_name(self):
-        """ """
+        """test"""
         new = self.value()
         self.assertEqual(type(new.first_name), str)
 
     def test_last_name(self):
-        """ """
+        """test"""
         new = self.value()
         self.assertEqual(type(new.last_name), str)
 
     def test_email(self):
-        """ """
+        """test"""
         new = self.value()
         self.assertEqual(type(new.email), str)
 
     def test_password(self):
-        """ """
+        """test"""
         new = self.value()
         self.assertEqual(type(new.password), str)
+
+    def tearDown(cls):
+        """test"""
+        del cls.user
+
+    def tearDown(self):
+        """test"""
+        try:
+            os.remove('file.json')
+        except:
+            pass
+
+    def test_is_subclass_User(self):
+        """ test subclass"""
+        self.assertTrue(issubclass(self.user.__class__, BaseModel), True)

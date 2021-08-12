@@ -29,3 +29,18 @@ class test_state(test_basemodel):
         """test"""
         new = self.value()
         self.assertEqual(type(new.name), str)
+
+    def tearDown(cls):
+        """test"""
+        del cls.state
+
+    def tearDown(self):
+        """test"""
+        try:
+            os.remove('file.json')
+        except:
+            pass
+
+    def test_is_subclass_State(self):
+        """ test subclass"""
+        self.assertTrue(issubclass(self.state.__class__, BaseModel), True)

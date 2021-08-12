@@ -79,3 +79,18 @@ class test_Place(test_basemodel):
         """test"""
         new = self.value()
         self.assertEqual(type(new.amenity_ids), list)
+
+    def tearDown(cls):
+        """test"""
+        del cls.amenity
+
+    def tearDown(self):
+        """test"""
+        try:
+            os.remove('file.json')
+        except:
+            pass
+
+    def test_is_subclass_Place(self):
+        """ test subclass"""
+        self.assertTrue(issubclass(self.place.__class__, BaseModel), True)

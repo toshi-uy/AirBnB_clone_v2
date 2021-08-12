@@ -34,3 +34,18 @@ class test_City(test_basemodel):
         """ test name"""
         new = self.value()
         self.assertEqual(type(new.name), str)
+
+    def test_is_subclass_City(self):
+        """ test subclass"""
+        self.assertTrue(issubclass(self.city.__class__, BaseModel), True)
+
+    def tearDown(cls):
+        """test"""
+        del cls.amenity
+
+    def tearDown(self):
+        """test"""
+        try:
+            os.remove('file.json')
+        except:
+            pass

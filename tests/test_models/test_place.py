@@ -75,14 +75,14 @@ class test_Place(test_basemodel):
         new = self.value()
         self.assertEqual(type(new.latitude), float)
 
-    def test_amenity_ids(self):
+    def test_place_ids(self):
         """test"""
         new = self.value()
-        self.assertEqual(type(new.amenity_ids), list)
+        self.assertEqual(type(new.place_ids), list)
 
     def tearDown(cls):
         """test"""
-        del cls.amenity
+        del cls.place
 
     def tearDown(self):
         """test"""
@@ -102,3 +102,10 @@ class test_Place(test_basemodel):
     def test_doc_string(self):
         """test"""
         self.assertIsNotNone(Place.__doc__)
+
+    def test_attributes(self):
+        """test"""
+        self.assertTrue('id' in self.place.__dict__)
+        self.assertTrue('created_at' in self.place.__dict__)
+        self.assertTrue('updated_at' in self.place.__dict__)
+        self.assertTrue('name' in self.place.__dict__)

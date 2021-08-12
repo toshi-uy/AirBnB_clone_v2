@@ -67,3 +67,10 @@ class test_User(test_basemodel):
     def test_doc_string(self):
         """test"""
         self.assertIsNotNone(User.__doc__)
+
+    def test_attributes(self):
+        """test"""
+        self.assertTrue('id' in self.user.__dict__)
+        self.assertTrue('created_at' in self.user.__dict__)
+        self.assertTrue('updated_at' in self.user.__dict__)
+        self.assertTrue('name' in self.user.__dict__)

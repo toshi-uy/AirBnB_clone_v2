@@ -52,3 +52,10 @@ class test_state(test_basemodel):
     def test_doc_string(self):
         """test"""
         self.assertIsNotNone(State.__doc__)
+
+    def test_attributes(self):
+        """test"""
+        self.assertTrue('id' in self.state.__dict__)
+        self.assertTrue('created_at' in self.state.__dict__)
+        self.assertTrue('updated_at' in self.state.__dict__)
+        self.assertTrue('name' in self.state.__dict__)

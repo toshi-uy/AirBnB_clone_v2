@@ -62,3 +62,10 @@ class test_review(test_basemodel):
     def test_doc_string(self):
         """test"""
         self.assertIsNotNone(Review.__doc__)
+
+    def test_attributes(self):
+        """test"""
+        self.assertTrue('id' in self.review.__dict__)
+        self.assertTrue('created_at' in self.review.__dict__)
+        self.assertTrue('updated_at' in self.review.__dict__)
+        self.assertTrue('name' in self.review.__dict__)

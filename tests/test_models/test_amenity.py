@@ -53,4 +53,9 @@ class test_Amenity(test_basemodel):
         """test"""
         self.assertIsNotNone(Amenity.__doc__)
 
-    d
+    def test_attributes(self):
+        """test"""
+        self.assertTrue('id' in self.amenity.__dict__)
+        self.assertTrue('created_at' in self.amenity.__dict__)
+        self.assertTrue('updated_at' in self.amenity.__dict__)
+        self.assertTrue('name' in self.amenity.__dict__)

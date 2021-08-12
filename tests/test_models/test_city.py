@@ -41,7 +41,7 @@ class test_City(test_basemodel):
 
     def tearDown(cls):
         """test"""
-        del cls.amenity
+        del cls.city
 
     def tearDown(self):
         """test"""
@@ -49,3 +49,10 @@ class test_City(test_basemodel):
             os.remove('file.json')
         except:
             pass
+
+    def test_attributes(self):
+        """test"""
+        self.assertTrue('id' in self.city.__dict__)
+        self.assertTrue('created_at' in self.city.__dict__)
+        self.assertTrue('updated_at' in self.city.__dict__)
+        self.assertTrue('name' in self.city.__dict__)

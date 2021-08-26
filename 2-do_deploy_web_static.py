@@ -30,7 +30,6 @@ def do_deploy(archive_path):
         return False
     try:
         filename = archive_path[9:-4]
-        print(filename)
         put(archive_path, "/tmp/")
         run("mkdir -p /data/web_static/releases/{}/".format(filename))
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/"
@@ -40,7 +39,7 @@ def do_deploy(archive_path):
              /data/web_static/releases/{1}}/".format(filename))
         run("rm -rf /data/web_static/releases/{}/web_static".format(filename))
         run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/{}/ /data/web_static/current"
+        run("ln -sf /data/web_static/releases/{}/ /data/web_static/current"
             .format(filename))
         return True
     except:

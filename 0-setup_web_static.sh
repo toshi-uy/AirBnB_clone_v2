@@ -12,6 +12,7 @@ chown -hR ubuntu:ubuntu /data/
 printf %s "server {
     location /hbnb_static/ {
         alias /data/web_static/current/;
+        index index.html index.htm;
     }
 }" > /etc/nginx/sites-available/default                           
 service nginx restart

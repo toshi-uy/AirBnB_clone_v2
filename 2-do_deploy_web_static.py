@@ -26,20 +26,6 @@ def do_deploy(archive_path):
     
     env.hosts = ['34.75.82.215', '34.138.61.91']
     env.user = ['ubuntu']
-    env.password = ['ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8cEVnchZu0PYnKnSc\
-                    YEs8tI2HxBchidGlKBjeXZ2pVnwg33aUvq7MxeSaqkA7C7cKb4mz4P1/Fg\
-                    qrU4XXRmFosjxkl93cNs0dEfutAzErdeu7gOeeEza8SfUiSRo3pl7O/YJ\
-                    1QBDNUhR1RipH/9fJ03rdZu+5Y5z108ZLCpgz7odhlic0v99tS99K5RgQ\
-                    TP5WQzI9gtbbuUnDfwVIASLKrC4yfdPgGH5gJ2IwPqLKupoIxJMHq5ozX\
-                    MU4wJ3STd63wyeoR52FQ0SoiV13AjPWcRl8Ub7T3wMMc/Ctg69UdcQnB6\
-                    1MSwSVu2nTEM16x3oRlT8Mr70Zs5/cW1Y8LWv3LMnyGLkcf7MjRlttne7\
-                    sfQjG8hkz0MICPdB4eoqzndomvfYnXfI5GL+xvCXZd8vG+sV52Ea95HoX\
-                    BiLMTft4FFSumy5AQuZn7vO4jryvOH2P+hIg4/cAoIkDTmawBW23KDS98\
-                    h7OGcqFoCjOuIw7MhErbmi4m/m6pZAreO0EzQx50SmOYJCdchvsTo3E4C\
-                    HZZc3snUVP5HtqaPp19jxkHRuK1lRRfG7Mg76aok8jyQ8sN+CMTXI5Dam\
-                    ECfU2e9A2l5v+60yHJEJcBNHzvLOJBakd0NKaTqIWwxBh16QK3BTrTWHS\
-                    FLL13fJWrWYfmjMv9ORqf96lOEUCweCeOKcwQQ== root@c078547f2c\
-                    df']
     if not archive_path:
         return False
     try:

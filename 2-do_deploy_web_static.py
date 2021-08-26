@@ -13,7 +13,6 @@ env.hosts = ['34.75.82.215', '34.138.61.91']
 def do_pack():
     """generates a .tgz archive from the contents of the web_static folder"""
     today = time.strftime("%Y%m%d%H%M%S", time.gmtime())
-    print(today)
     local("mkdir -p versions/")
     filename = "versions/web_static_" + today + ".tgz"
     try:

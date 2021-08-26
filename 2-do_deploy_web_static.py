@@ -31,6 +31,7 @@ def do_deploy(archive_path):
         return False
     try:
         filename = archive_path[9:-4]
+        print(filename)
         put(archive_path, "/tmp/")
         run("mkdir -p /data/web_static/releases/{}/".format(filename))
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/"

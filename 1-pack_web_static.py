@@ -15,7 +15,7 @@ def do_pack():
     local("mkdir -p versions/")
     filename = "versions/web_static_" + today + ".tgz"
     try:
-        local("tar -cvzf " + filename + "web_static")
+        local("tar -cvzf " + filename + " web_static")
         return filename
     except:
         return None

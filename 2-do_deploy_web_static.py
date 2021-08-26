@@ -7,6 +7,8 @@ from fabric.api import local, env, run, put
 import time
 from os import path
 
+env.hosts = ['34.75.82.215', '34.138.61.91']
+env.user = ['ubuntu']
 
 def do_pack():
     """generates a .tgz archive from the contents of the web_static folder"""
@@ -24,8 +26,6 @@ def do_pack():
 def do_deploy(archive_path):
     """distributes an archive to your web servers, using the function do_deploy"""
     
-    env.hosts = ['34.75.82.215', '34.138.61.91']
-    env.user = ['ubuntu']
     if not archive_path:
         return False
     try:

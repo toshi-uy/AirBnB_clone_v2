@@ -122,7 +122,6 @@ class HBNBCommand(cmd.Cmd):
         elif argumentos[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-
         new_instance = HBNBCommand.classes[argumentos[0]]()
 
         for i in range(1, len(argumentos)):
@@ -232,12 +231,9 @@ class HBNBCommand(cmd.Cmd):
                 return
             for k, v in storage.all().items():
                 if k.split('.')[0] == args:
-                    
-                    #v = v.to_dict()
                     print_list.append(v)
         else:
             for k, v in storage.all().items():
-                #v = v.to_dict()
                 print_list.append(v)
         print(print_list)
 

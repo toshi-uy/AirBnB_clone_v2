@@ -1,9 +1,51 @@
 #!/usr/bin/python3
 """ Module for testing file storage"""
-import unittest
-from models.base_model import BaseModel
-from models import storage
 import os
+import pep8
+import inspect
+import unittest
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models import storage
+
+
+@unittest.skipIf(
+    os.getenv('HBNB_TYPE_STORAGE') == 'db',
+    "Only works in Filestorage")
+class Test_pep8(unittest.TestCase):
+    """pep8 test cases class"""
+    def test_pep8_conformance(self):
+        """Test that we conform to PEP8."""
+        files = 'tests/test_models/test_engine/test_file_storage.py'
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files([files,
+                                        'models/engine/file_storage.py',
+                                        'models/engine/db_storage.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+
+
+class TestBaseDocs(unittest.TestCase):
+    """Base document tests"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Testing class"""
+        cls.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
+
+    def test_module_docstring(self):
+        """module docstring length"""
+        self.assertTrue(len(BaseModel.__doc__) >= 1)
+
+    def test_class_docstring(self):
+        """Class docstring length"""
+        self.assertTrue(len(BaseModel.__doc__) >= 1)
 
 
 class test_fileStorage(unittest.TestCase):
@@ -17,29 +59,27 @@ class test_fileStorage(unittest.TestCase):
         for key in del_list:
             del storage._FileStorage__objects[key]
 
-    def tearDown(self):
-        """ Remove storage file at end of tests """
-        try:
-            os.remove('file.json')
-        except:
-            pass
-
     def test_obj_list_empty(self):
         """ __objects is initially empty """
         self.assertEqual(len(storage.all()), 0)
 
     def test_new(self):
         """ New object is correctly added to __objects """
-        new = BaseModel()
-        for obj in storage.all().values():
-            temp = obj
-        self.assertTrue(temp is obj)
+        storage = FileStorage()
+        object = storage.all()
+        state = State()
+        state.name = "Cerro_Chato"
+        storage.new(state)
+        key = state.__class__.__name__ + "." + str(state.id)
+        self.assertIsNotNone(object[key])
 
     def test_all(self):
         """ __objects is properly returned """
-        new = BaseModel()
+        storage = FileStorage()
         temp = storage.all()
         self.assertIsInstance(temp, dict)
+        self.assertIsNotNone(temp)
+        self.assertIs(temp, storage._FileStorage__objects)
 
     def test_base_model_instantiation(self):
         """ File is not created on BaseModel save """
@@ -107,3 +147,6 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+if __name__ == "__main__":
+    unittest.main()

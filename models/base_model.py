@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+from os import getenv
 
 Base = declarative_base()
 
@@ -30,12 +31,14 @@ class BaseModel():
                     setattr(self, key, pichu)
                 else:
                     setattr(self, key, value)
+            if 'id' not in kwargs:
+                setattr(self, 'id', str(uuid.uuid4()))
 
     def __str__(self):
         """Returns a string representation of the instance"""
         cls = (str(type(self)).split('.')[-1]).split('\'')[0]
         return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
-    
+
     def __repr__(self):
         """Returns a string representation of the instance"""
         return self.__str__()

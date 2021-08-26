@@ -7,9 +7,11 @@ from fabric.api import local
 import time
 from os import path
 
+
 def do_pack():
     """generates a .tgz archive from the contents of the web_static folder"""
     today = time.strftime("%Y%m%d%H%M%S", time.gmtime())
+    local("mkdir -p versions/")
     filename = "versions/web_static_" + today + ".tgz"
     try:
         local("tar -cvzf " + filename + "web_static")

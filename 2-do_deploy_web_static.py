@@ -10,6 +10,7 @@ from os import path
 env.hosts = ['34.75.82.215', '34.138.61.91']
 env.user = ['ubuntu']
 
+
 def do_pack():
     """generates a .tgz archive from the contents of the web_static folder"""
     today = time.strftime("%Y%m%d%H%M%S", time.gmtime())
@@ -24,8 +25,9 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """distributes an archive to your web servers, using the function do_deploy"""
-    
+    """distributes an archive to your web servers, using the
+    function do_deploy"""
+
     if not archive_path:
         return False
     try:

@@ -54,7 +54,7 @@ def deploy():
     """creates and distributes an archive to your web servers,
     using the function deploy"""
     filepath = do_pack()
+    print(filepath)
     if filepath is None:
         return False
-    else:
-        return do_deploy(filepath)
+    return do_deploy(filepath)

@@ -32,7 +32,7 @@ def do_deploy(archive_path):
     try:
         filename = archive_path[9:-4]
         put(archive_path, "/tmp/")
-        run("mkdir -p /data/web_static/releases/{}".format(filename))
+        run("mkdir -p /data/web_static/releases/{}/".format(filename))
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/"
             .format(filename + ".tgz", filename))
         run("rm /tmp/{}".format(filename + ".tgz"))

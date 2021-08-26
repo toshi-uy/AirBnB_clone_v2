@@ -56,4 +56,5 @@ def deploy():
     filepath = do_pack()
     if filepath is None:
         return False
-    return do_deploy(filepath)
+    answ = do_deploy(filepath)
+    return answ

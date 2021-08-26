@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bash script that sets up your web servers for the deployment of web_static
-apt-get upodate -y
+apt-get upodate
 apt-get install nginx -y
 mkdir -p /data/web_static/shared/
 mkdir -p /data/web_static/releases/test/

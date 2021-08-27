@@ -24,7 +24,7 @@ exec {'Soft Link':
 }
 
 exec {'chown':
-     command => 'chown -R ubuntu:ubuntu /data/',
+     command => 'sudo chown -hR ubuntu:ubuntu /data/',
      provider => shell,
      require => Exec['Soft Link']
 }

@@ -63,6 +63,6 @@ def do_clean(number=0):
     if number is 0 or number is 1:
        local('cd versions; ls | sort -n | tail -n +2 | xargs rm -rf && echo "versions cleaned"')
        run('cd /data/web_static/releases; ls | sort -n | tail -n +2 | xargs rm -rf && echo "releases cleaned"')
-    elif number == 2:
+    elif number >= 2:
         local('cd versions; ls | sort -n | tail -n +3 | xargs rm -rf && echo "versions cleaned"')
         run('cd /data/web_static/releases; ls | sort -n | tail -n +3 | xargs rm -rf && echo "releases cleaned"')

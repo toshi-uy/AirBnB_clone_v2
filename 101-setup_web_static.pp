@@ -6,14 +6,13 @@ exec {'Nginx':
 }
 
 exec {'folders':
-     command  => 'mkdir -p /data/web_static/releases/test/;
-     	     	 sudo mkdir -p /data/web_static/shared/',
+     command  => 'sudo mkdir -p /data/web_static/releases/test/ && sudo mkdir -p /data/web_static/shared/',
      provider => shell,
      require  => Exec['Nginx']
 }
 
 exec {'index':
-     command  => 'echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
+     command  => 'echo "Holberton School" > /data/web_static/releases/test/index.html',
      provider => shell,
      require  => Exec['folders']
 }
@@ -31,9 +30,11 @@ exec {'chown':
 }
 
 exec {'Location':
-     command  => 'echo "location /hbnb_static/ {
+     command  => 'printf %s "server {
+          location /hbnb_static/ {
                alias /data/web_static/current/;
-          }" > /etc/nginx/sites-available/default',
+          }
+     }" > /etc/nginx/sites-available/default',
      provider => shell,
      require  => Exec['chown']
 }

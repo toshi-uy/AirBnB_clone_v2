@@ -65,5 +65,5 @@ def do_clean(number=0):
        run('cd /data/web_static/releases; ls | sort -n | tail -n +2 | xargs rm -rf && echo "releases cleaned"')
     else:
         number += 1
-        local('cd versions; ls | sort -n | tail -n {} | xargs rm -rf && echo "versions cleaned"'.format(number))
-        run('cd /data/web_static/releases; ls | sort -n | tail -n +3 | xargs rm -rf && echo "releases cleaned"'.format(number))
+        local('cd versions; ls | sort -n | tail -n +{} | xargs rm -rf && echo "versions cleaned"'.format(number))
+        run('cd /data/web_static/releases; ls | sort -n | tail -n +{} | xargs rm -rf && echo "releases cleaned"'.format(number))

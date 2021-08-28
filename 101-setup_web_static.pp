@@ -30,7 +30,7 @@ exec {'chown':
 }
 
 exec {'Location':
-     command => 'sed -i "\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n" /etc/nginx/sites-available/default',
+     command => 'echo -e "\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n" > /etc/nginx/sites-available/default',
      provider => shell,
      require => Exec['chown']
 }

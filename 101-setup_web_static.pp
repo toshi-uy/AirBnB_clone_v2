@@ -12,13 +12,13 @@ exec {'folders':
 }
 
 exec {'index':
-     command => 'sudo echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
+     command => 'echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
      provider => shell,
      require => Exec['folders']
 }
 
 exec {'Soft Link':
-     command => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
+     command => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
      provider => shell,
      require => Exec['index']
 }
@@ -30,7 +30,7 @@ exec {'chown':
 }
 
 exec {'Location':
-     command => 'sed -i "server {\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n}" /etc/nginx/sites-available/default',
+     command => 'sed -i "\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n" /etc/nginx/sites-available/default',
      provider => shell,
      require => Exec['chown']
 }

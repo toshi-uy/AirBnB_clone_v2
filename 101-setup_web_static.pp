@@ -31,8 +31,6 @@ exec {'chown':
 
 exec {'Location':
      command  => 'printf %s "server {
-          listen      80 default_server;
-          listen      [::]:80 default_server;
           location /hbnb_static/ {
                alias /data/web_static/current/;
           }

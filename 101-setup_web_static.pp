@@ -4,7 +4,7 @@ exec {'sudo':
      provider => shell
 }
 exec {'Nginx':
-     command  => 'apt-get update; apt-get install nginx -y',
+     command  => 'sudo apt-get update; sudo apt-get install nginx -y',
      provider => shell
 }
 
@@ -28,7 +28,7 @@ exec {'Soft Link':
 }
 
 exec {'chown':
-     command  => 'chown -hR ubuntu:ubuntu /data/',
+     command  => 'sudo chown -hR ubuntu:ubuntu /data/',
      provider => shell,
      require  => Exec['Soft Link']
 }

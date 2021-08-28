@@ -30,7 +30,7 @@ exec {'chown':
 }
 
 exec {'Location':
-     command => 'sudo echo "server {\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n}" > /etc/nginx/sites-available/default',
+     command => 'echo "server {\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n}" > /etc/nginx/sites-available/default',
      provider => shell,
      require => Exec['chown']
 }

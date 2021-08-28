@@ -1,49 +1,48 @@
 # Puppet for setup - Redo the task #0 but by using Puppet:
 exec {'sudo':
-     command => 'sudo su',
+     command  => 'sudo su',
      provider => shell
 }
 exec {'Nginx':
-     command => 'apt-get update; apt-get install nginx -y',
+     command  => 'apt-get update; apt-get install nginx -y',
      provider => shell
-     require => Exec['sudo']
 }
 
 exec {'folders':
-     command => 'mkdir -p /data/web_static/releases/test/;
+     command  => 'mkdir -p /data/web_static/releases/test/;
      	     	 sudo mkdir -p /data/web_static/shared/',
      provider => shell,
-     require => Exec['Nginx']
+     require  => Exec['Nginx']
 }
 
 exec {'index':
-     command => 'echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
+     command  => 'echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
      provider => shell,
-     require => Exec['folders']
+     require  => Exec['folders']
 }
 
 exec {'Soft Link':
-     command => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
+     command  => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
      provider => shell,
-     require => Exec['index']
+     require  => Exec['index']
 }
 
 exec {'chown':
-     command => 'chown -hR ubuntu:ubuntu /data/',
+     command  => 'chown -hR ubuntu:ubuntu /data/',
      provider => shell,
-     require => Exec['Soft Link']
+     require  => Exec['Soft Link']
 }
 
 exec {'Location':
-     command => 'echo "location /hbnb_static/ {
+     command  => 'echo "location /hbnb_static/ {
                alias /data/web_static/current/;
           }" > /etc/nginx/sites-available/default',
      provider => shell,
-     require => Exec['chown']
+     require  => Exec['chown']
 }
 
 exec {'Restart':
-     command => 'service nginx restart',
+     command  => 'service nginx restart',
      provider => shell,
-     require => Exec['Location']
+     require  => Exec['Location']
 }

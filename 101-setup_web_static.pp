@@ -1,11 +1,16 @@
 # Puppet for setup - Redo the task #0 but by using Puppet:
-exec {'Nginx':
-     command => 'sudo apt-get update; sudo apt-get install nginx -y',
+exec {'sudo':
+     command => 'sudo su',
      provider => shell
+}
+exec {'Nginx':
+     command => 'apt-get update; apt-get install nginx -y',
+     provider => shell
+     require => Exec['sudo']
 }
 
 exec {'folders':
-     command => 'sudo mkdir -p /data/web_static/releases/test/;
+     command => 'mkdir -p /data/web_static/releases/test/;
      	     	 sudo mkdir -p /data/web_static/shared/',
      provider => shell,
      require => Exec['Nginx']
@@ -24,7 +29,7 @@ exec {'Soft Link':
 }
 
 exec {'chown':
-     command => 'sudo chown -hR ubuntu:ubuntu /data/',
+     command => 'chown -hR ubuntu:ubuntu /data/',
      provider => shell,
      require => Exec['Soft Link']
 }
@@ -38,7 +43,7 @@ exec {'Location':
 }
 
 exec {'Restart':
-     command => 'sudo service nginx restart',
+     command => 'service nginx restart',
      provider => shell,
      require => Exec['Location']
 }

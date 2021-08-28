@@ -31,8 +31,7 @@ exec {'chown':
 }
 
 exec {'Location':
-     command  => 'sudo su',
-     command  => 'echo "location /hbnb_static/ {
+     command  => 'sudo su; echo "location /hbnb_static/ {
                alias /data/web_static/current/;
           }" > /etc/nginx/sites-available/default',
      provider => shell,

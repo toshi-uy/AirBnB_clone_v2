@@ -12,13 +12,13 @@ exec {'folders':
 }
 
 exec {'index':
-     command => 'echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
+     command => 'sudo echo "Holberton School" | sudo tee /data/web_static/releases/test/index.html',
      provider => shell,
      require => Exec['folders']
 }
 
 exec {'Soft Link':
-     command => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
+     command => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
      provider => shell,
      require => Exec['index']
 }
@@ -36,7 +36,7 @@ exec {'Location':
 }
 
 exec {'Restart':
-     command => 'service nginx restart',
+     command => 'sudo service nginx restart',
      provider => shell,
      require => Exec['Location']
 }

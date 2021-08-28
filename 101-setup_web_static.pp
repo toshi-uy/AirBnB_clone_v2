@@ -18,7 +18,7 @@ exec {'index':
 }
 
 exec {'Soft Link':
-     command  => 'ln -sf /data/web_static/releases/test/ /data/web_static/current',
+     command  => 'ln -sf /data/web_static/releases/test /data/web_static/current',
      provider => shell,
      require  => Exec['index']
 }

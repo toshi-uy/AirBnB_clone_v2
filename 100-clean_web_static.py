@@ -61,8 +61,8 @@ def do_clean(number=0):
     """deletes out-of-date archives"""
     number = int(number)
     if number is 0 or number is 1:
-       local('cd versions; ls | sort -n | tail -1 | xarg rm -rf')
-       run('cd /data/web_static/releases; ls | sort -n | tail -1 | xarg rm -rf')
+       local('cd versions; ls | sort -n | tail -1 | xarg rm -rf && echo "versions cleaned"')
+       run('cd /data/web_static/releases; ls | sort -n | tail -1 | xarg rm -rf && echo "releases cleaned"')
     elif number == 2:
-        local('cd versions; ls | sort -n | tail -2 | xarg rm -rf')
-        run('cd /data/web_static/releases; ls | sort -n | tail -2 | xarg rm -rf')
+        local('cd versions; ls | sort -n | tail -2 | xarg rm -rf && echo "versions cleaned"')
+        run('cd /data/web_static/releases; ls | sort -n | tail -2 | xarg rm -rf && echo "releases cleaned"')

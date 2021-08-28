@@ -1,8 +1,5 @@
 # Puppet for setup - Redo the task #0 but by using Puppet:
-exec {'sudo':
-     command  => 'sudo su',
-     provider => shell
-}
+
 exec {'Nginx':
      command  => 'sudo apt-get update; sudo apt-get install nginx -y',
      provider => shell
@@ -34,7 +31,7 @@ exec {'chown':
 }
 
 exec {'Location':
-     command  => 'echo "location /hbnb_static/ {
+     command  => 'sudo echo "location /hbnb_static/ {
                alias /data/web_static/current/;
           }" > /etc/nginx/sites-available/default',
      provider => shell,

@@ -18,7 +18,7 @@ def hello_world():
 
 
 @app.route('/hbnb')
-def hello_world():
+def hbnb():
     """ Default method """
     return 'HBNB'
 

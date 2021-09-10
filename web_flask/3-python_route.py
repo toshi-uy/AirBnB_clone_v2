@@ -33,7 +33,7 @@ def c(text):
 @app.route('/python/<text>')
 def python(text):
     """ Default method """
-    if text is None:
+    if not text:
         text = "is cool"
     new = text.replace('_', ' ')
     return 'Python %s' % escape(new)

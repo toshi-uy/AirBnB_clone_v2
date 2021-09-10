@@ -6,6 +6,7 @@ Script that starts a Flask web application:
     /: display “Hello HBNB!”
 You must use the option strict_slashes=False in your route definition
 """
+from types import prepare_class
 from flask import Flask, escape
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -42,7 +43,9 @@ def python(text="is cool"):
 def number(n):
     """ Default method """
     if type(n) is int:
-        return '{} is a number'.format(n)
+        return '{%d} is a number'.format(n)
+    else:
+        return None
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

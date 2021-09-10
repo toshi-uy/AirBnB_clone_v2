@@ -39,7 +39,7 @@ def python(text="is cool"):
 
 
 @app.route('/number/<n>')
-def python(n):
+def number(n):
     """ Default method """
     if type(n) is int:
         return '%d is a number' % escape(n)

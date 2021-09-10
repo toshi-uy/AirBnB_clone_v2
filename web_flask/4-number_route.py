@@ -42,7 +42,7 @@ def python(text="is cool"):
 @app.route('/number/<n>')
 def number(n):
     """ Default method """
-    if type(n) is int:
+    if isinstance(n, int):
         return '{%d} is a number'.format(n)
     else:
         return None

@@ -30,7 +30,8 @@ def c(text):
     return 'C %s' % escape(new)
 
 
-@app.route('/python/(<text>)')
+@app.route('/python/')
+@app.route('/python/<text>')
 def python(text="is cool"):
     """ Default method """
     new = text.replace('_', ' ')

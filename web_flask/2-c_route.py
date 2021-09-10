@@ -27,7 +27,7 @@ def hbnb():
 def c(text):
     """ Default method """
     new = text.replace('_', ' ')
-    return 'C%s' % escape(new)
+    return 'C %s' % escape(new)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

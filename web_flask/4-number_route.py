@@ -42,7 +42,7 @@ def python(text="is cool"):
 @app.route('/number/<n>')
 def number(n):
     """ Default method """
-    return '{%d} is a number'.format(n)
+    return '{:d} is a number'.format(n)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

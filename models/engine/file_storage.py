@@ -72,3 +72,7 @@ class FileStorage:
             for key in copy_dict:
                 if key.split(".")[1] == obj.__dict__['id']:
                     del(FileStorage.__objects[key])
+
+    def close(self):
+        """method for deserializing the JSON file to objects"""
+        self.reload()

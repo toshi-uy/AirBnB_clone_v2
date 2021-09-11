@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
-@app.route('/states_list')
+@app.route('/cities_by_states')
 def cities_by_states():
     """ Default method """
     states = storage.all(State)

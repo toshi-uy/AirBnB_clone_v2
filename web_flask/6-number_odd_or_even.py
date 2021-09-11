@@ -58,7 +58,7 @@ def template(n):
 
 
 @app.route('/number_odd_or_even/<n>')
-def number_odd_or_even(n):
+def odd_or_even(n):
     """ Default method """
     try:
         return render_template('6-number_odd_or_even.html', n=int(n))

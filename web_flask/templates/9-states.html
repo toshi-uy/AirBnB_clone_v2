@@ -3,11 +3,11 @@
     <HEAD>
         <TITLE>HBNB</TITLE>
     </HEAD>
-    {%+ if id %}
+    {% if id %}
     {% set ns = namespace(foo=False) %}
     <BODY>
         {% for item in states.values()|sort(attribute="name") %}
-        {%+ if item.id == id %}
+        {% if item.id == id %}
         {% set ns.foo = True %}
             <H1>State: {{ item.name }}</H1>
             <H3>Cities:</H3>

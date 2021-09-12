@@ -6,7 +6,7 @@
     {%+ if id %}
     {% set ns = namespace(foo=False) %}
     <BODY>
-        {% for item in states.values()|sort(attribute="name") -%}
+        {% for item in states.values()|sort(attribute="name") %}
         {%+ if item.id == id %}
         {% set ns.foo = True %}
             <H1>State: {{ item.name }}</H1>
@@ -17,7 +17,7 @@
                 {% endfor %}
             </UL>
         {% endif %}
-        {%- endfor %}
+        {% endfor %}
     {% if ns.foo == False %} <H1>Not found!</H1> {% endif %}
     </BODY>
     {% else %}

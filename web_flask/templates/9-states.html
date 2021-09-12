@@ -16,9 +16,11 @@
                     <li>{{ city.id }}: <B>{{ city.name }}</B></li>
                 {% endfor %}
             </UL>
+        {% endif %}
         {% endfor %}
     {% if flag == False %}
         <H1>Not found!</H1>
+    {% endif %}
     </BODY>
     {% else %}
     <BODY>

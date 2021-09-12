@@ -15,8 +15,8 @@ def states_id(id=None):
     """ Default method """
     states = storage.all(State)
     if (id):
-        return render_template('9-states.html.html', states=states, id=id)
-    return render_template('9-states.html.html', states=states)
+        return render_template('9-states.html', states=states, id=id)
+    return render_template('9-states.html', states=states)
 
 
 @app.teardown_appcontext

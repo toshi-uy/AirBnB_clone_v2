@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    {% if id %}
+    {% set flag = False %}
+    <BODY>
+        {% for item in states.values()|sort(attribute="name") %}
+        {% if item.id == id %}
+        {% set flag = True %}
+            <H1>State: {{ item.name }}</H1>
+            <H3>Cities:</H3>
+            <UL>
+                {% for city in item.cities|sort(attribute="name") %}
+                    <li>{{ city.id }}: <B>{{ city.name }}</B></li>
+                {% endfor %}
+            </UL>
+        {% endfor %}
+    {% if flag == False %}
+        <H1>Not found!</H1>
+    </BODY>
+    {% else %}
+    <BODY>
+        <H1>States</H1>
+        <UL>
+        {% for item in states.values()|sort(attribute="name") %}
+            <li>{{ item.id }}: <B>{{ item.name }}</B></li>
+        {% endfor %}
+        </UL>
+    </BODY>
+    {% endif %}
+</HTML>

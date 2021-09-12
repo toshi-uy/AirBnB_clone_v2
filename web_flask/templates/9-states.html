@@ -4,11 +4,11 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     {% if id %}
-    {% set flag = False %}
+    {% set ns = namespace(foo=False) %}
     <BODY>
         {% for item in states.values()|sort(attribute="name") %}
         {% if item.id == id %}
-        {% set flag = True %}
+        {% set ns.foo = True %}
             <H1>State: {{ item.name }}</H1>
             <H3>Cities:</H3>
             <UL>
@@ -18,9 +18,7 @@
             </UL>
         {% endif %}
         {% endfor %}
-    {% if flag == False %}
-        <H1>Not found!</H1>
-    {% endif %}
+    {% if ns.foo == False %} <H1>Not found!</H1> {% endif %}
     </BODY>
     {% else %}
     <BODY>

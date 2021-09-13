@@ -48,6 +48,10 @@
 	display: inline-block;
 }
 
+.locations:hover .popover ul {
+	padding-left: 40px;
+}
+
 .filter_amenities:hover .popover {
 	display: inline-block;
 }
@@ -59,7 +63,6 @@ ul {
 }
 
 li {
-	margin-left: auto;
 }	
 
 h2 {

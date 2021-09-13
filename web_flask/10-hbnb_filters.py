@@ -5,6 +5,7 @@ Script that starts a Flask web application
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+from models.amenity import Amenity
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
@@ -13,7 +14,7 @@ app.url_map.strict_slashes = False
 def hbnb_filters():
     """ Default method """
     states = storage.all(State)
-    amenities = storage.all('Amenity')
+    amenities = storage.all(Amenity)
     return render_template('10-hbnb_filters.html', states=states, amenities=amenities)
 
 

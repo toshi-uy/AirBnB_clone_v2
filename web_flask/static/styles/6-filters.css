@@ -44,10 +44,6 @@
 	border-radius: 4px;
 }
 
-.locations > .popover > ul {
-	padding-left: 40px;
-}
-
 .locations:hover .popover {
 	display: inline-block;
 }
@@ -63,6 +59,7 @@ ul {
 }
 
 li {
+	padding-left: 20px;
 }	
 
 h2 {

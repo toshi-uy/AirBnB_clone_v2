@@ -39,8 +39,8 @@
 					<h4>&nbsp;</h4>
 					<div class="popover">
 						<UL>
-							{% for item in amenities.values()|sort(attribute="name") %}
-								<li>{{ item.name }}</li>
+							{% for amenity in amenities.values()|sort(attribute="name") %}
+								<li>{{ amenity.name }}</li>
 							{% endfor %}
 						</UL>
 					</div>

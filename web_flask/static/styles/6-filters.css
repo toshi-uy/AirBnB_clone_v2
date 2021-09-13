@@ -15,7 +15,7 @@
 	width: 25%;
 
 	line-height: 20px;
-	border-right: 1px solid #DDDDDD;
+	border-right: 10x solid #ff0000;
 }
 
 .filter_amenities {
@@ -31,7 +31,7 @@
 .popover {
 	list-style-type: none;
 	display: none;
-	background-color: #ff0000;
+	background-color: #FAFAFA;
 	width: 100%;
 	overflow: scroll;
 	max-height: 300px;

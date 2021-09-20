@@ -27,7 +27,6 @@ article {
 .headline {
 	display: flex;
 	flex-direction: row;
-	position: relative;
 
 	height: 80px;	
 	width: 100%;

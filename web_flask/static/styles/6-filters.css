@@ -6,6 +6,8 @@
 .filters {
 	display: block;
 	background-color: white;
+	max-width: 1000px;
+    margin: 30px auto;
 	height: 70px;
 	width: 100%;
 	border: 1px solid #DDDDDD;

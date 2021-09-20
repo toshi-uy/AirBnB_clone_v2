@@ -1,8 +1,3 @@
-.cont {
-    max-width: 1000px;
-    margin: 30px auto;
-}
-
 .filters {
 	display: block;
 	background-color: white;
@@ -12,6 +7,11 @@
 	width: 100%;
 	border: 1px solid #DDDDDD;
 	border-radius: 4px;
+}
+
+.cont {
+    max-width: 1000px;
+    margin: 30px auto;
 }
 
 .locations {

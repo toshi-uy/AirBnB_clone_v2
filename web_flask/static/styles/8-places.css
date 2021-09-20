@@ -27,8 +27,6 @@ article {
 .headline {
 	display: flex;
 	flex-direction: row;
-	position: relative;
-
 	height: 80px;	
 	width: 100%;
 }
@@ -37,8 +35,6 @@ article {
 	display: flex;
 	justify-content: center;
 	align-self: flex-end;
-
-	position: absolute;
 	right: 0;
 
 	line-height: 60px;

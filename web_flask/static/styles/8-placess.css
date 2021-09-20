@@ -28,7 +28,7 @@ article {
 	display: flex;
 	flex-direction: row;
 
-	height: 80px;	
+	height: auto;	
 	width: 100%;
 }
 
